@@ -1,0 +1,16 @@
+{% extends "App1/padre.html" %}
+
+{% block titulo %}
+BUSCAR PRODUCTO
+{% endblock %}
+
+
+{% block info %}
+
+<form action="/App1/resultado_productos/" method="GET">
+    <input type="text" name="producto">
+    <input type="submit" value="Buscar">
+</form>
+
+
+{% endblock %}

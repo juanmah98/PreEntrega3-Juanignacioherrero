@@ -1,0 +1,17 @@
+{% extends "App1/padre.html" %}
+
+{% block info %}
+<form action="" method="POST"> {% csrf_token %}
+    <div class="text-center text-dark">   <br>  
+   <br>
+
+<p>Estamos buscando el producto. {{nombre}}.</p>
+
+{% for x in resultado %}
+
+ De tipo {{x.tipo}} y de color {{x.color}}
+
+{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "App1/padre.html" %}
+
+{% block titulo %}
+CREAR UN PRODUCTO:
+{% endblock %}
+
+
+{% block info %}
+
+<form action="" method="POST"> {% csrf_token %}
+    <div class="text-center text-dark">   <br>  
+   <br>
+        {{formulario1.as_p}}
+
+    <input type = "submit" value="Enviar">
+
+
+
+
+{% endblock %}
