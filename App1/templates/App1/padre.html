@@ -31,14 +31,27 @@
                                 <li><a class="dropdown-item" href="{% url 'PRODUCTO' %}">NUESTROS PRODUCTOS</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">OFERTAS</a></li>
-                                <li><a class="dropdown-item" href="#!">POPULARES</a></li>
+                                
                             </ul>
-                        </li>
+                                              {% if request.user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'Logout' %}">CERRAR SESION</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                         
+                        {% else %}
+
+                        <li><a class="dropdown-item" href="{% url 'Registro' %}">REGISTRARSE</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="{% url 'Login' %}">INICIAR SECION</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+
+                        {% endif %}
+                            
                     </ul> 
+                    
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            Cart
+                            Compras
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
@@ -70,7 +83,7 @@
                             {% endblock %} 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Juan Herrero &copy; proyecto Muna 2023</p></div>
+            <div class="container"><p class="m-10 text-center text-white">Juan Herrero &copy; proyecto Muna 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

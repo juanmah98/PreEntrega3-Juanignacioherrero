@@ -6,6 +6,7 @@ class prodcutos(models.Model):
     tipo = models.CharField(max_length=30)
     talle = models.IntegerField()
     color = models.CharField(max_length=30)
+    
 
 class contacto(models.Model):
     nombre = models.CharField(max_length=20)

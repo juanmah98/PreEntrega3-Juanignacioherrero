@@ -1,0 +1,25 @@
+{% extends "App1/padre.html" %}
+
+{% block titulo %}
+ACA PODEMOS INICIAR SESION
+{% endblock %}
+
+{% block info %}
+
+<form action="" method="POST">{% csrf_token %}
+   
+    <header class="bg-white py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-dark">
+                <br>
+                   {{formulario.as_p}} <br>
+
+    
+
+        <button type="sumbit">Iniciar Sesion</button>
+</form>
+    
+    
+    
+    
+{% endblock %} 

@@ -2,6 +2,62 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from App1.models import *
 from App1.forms import *
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
+
+
+
+def InicioSesion(request):
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+        
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username = usuario, password = contra )
+
+            if user:
+
+                login(request, user)
+                
+                return render(request, "App1/inicio.html", {"mensaje":f"Bienvenido {user}"})
+            
+        else:
+
+                return render(request, "App1/inicio.html", {"mensaje":"DATOS INCORRECTOS."})
+       
+    else:
+
+        form = AuthenticationForm()
+
+    return render(request, "App1/login.html", {"formulario":form})
+
+
+def registro(request):
+
+    if request.method == "POST":
+
+        form = UsuarioRegistro(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+
+            form.save()
+
+            return render(request, "App1/inicio.html", {"mensaje":"Usuario Creado Con Exito!"})
+        
+    else:
+
+        form = UsuarioRegistro()    
+
+    return render(request, "App1/registro.html", {"formulario":form})
+
+
 
 
 def inicio(request):
